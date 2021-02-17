@@ -41,13 +41,13 @@ class Player {
         })
     }
 getFinishedPlayer(){
-    var finished= database.ref('finishedPlayers').on("value",(data)=>{
+    var finished= database.ref('finishedPlayer').on("value",(data)=>{
      finishedplayer=data.val()
     })
 }
    static updatefinishedPlr(){
        database.ref('/').update({
-           finishedPlayers:finishedplayer+1
+           finishedPlayer:finishedplayer+1
 
        })
 this.rank=this.rank+1

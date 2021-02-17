@@ -38,6 +38,7 @@ class Game {
         player2.addImage( player_img);
         //including the players sprites in an array
         players = [player1, player2];
+        passedfinish=false
     }
 
     //function play
@@ -133,19 +134,44 @@ if( fruitGroup.get(i).isTouching (players)){
 
 }
 }
-
+if(player.score===5 && passedfinish===false){
+    Player.updatefinishedPlr()
+    console.log(finishedplayer)
+    player.rank=finishedplayer
+    player.update()
+    fruitGroup.setVelocityYEach(0)
+    fruitGroup.destroyEach()
+    passedfinish=true
+}else if(player.score===10 && passedfinish===true){
+    fruitGroup.setVelocityYEach(0)
+    fruitGroup.destroyEach()
+}
 
 }
 end(){
-    game.update(2)
-    clear()
-    background(gamestate_2img)
-    fill("white")
-    textSize(40)
-    text("Basket Is Full",200,300-50)
-    textSize(30)
-    text("Go Home",200,300+40-50)
    
+ console.log("game ended")
+   
+}
+
+displayrank(){
+    camera.position.x=0
+    camera.position.y=0
+    imageMode(CENTER)
+    Player.getPlayerInfo
+    image(bronze,displayWidth/4-300,100,150,250)
+    image(gold,displayWidth/4-700,-100,200,300)
+    textAlign(CENTER)
+    textSize(50)
+    fill("white")
+    for(var i in allPlayers){
+        if(allPlayers[i].rank===1){
+            text(allPlayers[i].name,displayWidth/4-500-30,-100+50)
+        }
+        else{
+            text(allPlayers[i].name,displayWidth/4-100-30,100+50)
+        }
+    }
 }
 
 

@@ -11,7 +11,8 @@ var fruits;
 var fruitGroup;
 var fruit1_img, fruit2_img, fruit3_img, fruit4_img, fruit5_img;
 var player_img;
-var finishedplayer
+var finishedplayer=0
+var passedfinish
 
 function preload(){
   back_img = loadImage("images/jungle.jpg");
@@ -22,6 +23,8 @@ function preload(){
   fruit4_img = loadImage("images/orange2.png");
   fruit5_img = loadImage("images/pineapple2.png");
   gamestate_2img=loadImage("images/gamestate 2.jpg")
+  bronze=loadImage("images/bronze.png.png")
+ gold=loadImage("images/gold.png")
   fruitGroup = new Group();
 }
 function setup() {
@@ -40,11 +43,16 @@ function draw() {
     game.play();
   }
   
-  if (playerCount === 2) {
+  if (playerCount === 2 && finishedplayer===0) {
     game.update(1);
+
   }
 
-  if(player.score >= 10){
-    game.end()
+  if(gameState===2 && finishedplayer===2){
+    game.displayrank()
+    
+  }
+  if(finishedplayer===2){
+    game.update(2)
   }
 }
